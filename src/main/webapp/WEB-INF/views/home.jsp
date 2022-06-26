@@ -108,10 +108,9 @@ IMP.request_pay({
 				of finding pair programmer</button>
 		</div>
 		<br>
-		<div class="slide-child">Review of Today and before is Review of
-			Tomorrow.</div>
-		<div class="slide-child">But</div>
-		<div class="slide-child">If Tomorrow Vision with Heart Exists, It makes Today Mission</div>
+		<div class="slide-child">나와 맞는 개발자를 구하자</div>
+		<div class="slide-child">물론</div>
+		<div class="slide-child">혼자보다 낫다</div>
 		<br>
 		<div class="slide-child">
 			<button class="buttonHome"
