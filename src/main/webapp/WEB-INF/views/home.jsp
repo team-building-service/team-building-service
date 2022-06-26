@@ -105,7 +105,7 @@ IMP.request_pay({
 
 		<div>
 			<button class="custom-btn btn-1" id="popup_open_btn">Introduction
-				of EveAdam Blog</button>
+				of finding pair programmer</button>
 		</div>
 		<br>
 		<div class="slide-child">Review of Today and before is Review of
