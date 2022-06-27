@@ -78,23 +78,19 @@ a:link {
 a:visited {
   color : gray;
 }
-
 </style>
 
 <html>
 <title>board</title>
 
 <body>
-
 	<div class="homebodyWrapper">
 		<h1>REVIEW</h1>
 		<c:if test="${member != null}">
 		<a href="./boardinsert">Insert Board</a> |
 		<a href="./boarddelete">Delete Board</a>
 		</c:if>
-		
 	</div>
-
 	<div class="itemListWrapper">
 		<c:forEach items="${boardlist}" var="dto">
 			<div class="itemList slide-child">
@@ -109,8 +105,6 @@ a:visited {
 				</div>
 			</div>
 		</c:forEach>
-
 	</div>
-
 </body>
 </html>

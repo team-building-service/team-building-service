@@ -10,7 +10,6 @@
 <title>Detail of Article</title>
 
 <style>
-/* style of wrapper */
 .articledetailWrapper {
 	margin: 150px auto;
 	width: 600px;
@@ -20,7 +19,6 @@
 	line-height: 1.8;
 }
 
-/* style of table and related */
 table {
 	border-color: white;
 	border-collapse: collapse;
@@ -52,7 +50,6 @@ a:visited {
 	color: gray;
 }
 
-/* style of button link ;  https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_border */
 .button {
 	background-color: white;
 	border: none;
@@ -80,6 +77,75 @@ a:visited {
 }
 </style>
 
+<script>
+	$(document).ready(function() {
+		showTable();
+	})
+
+	function showTable() {
+		$("#tbl_reply").hide();
+		$("#tbl_articledetail").show();
+	}
+
+	function showReply() {
+		$("#tbl_articledetail").hide();
+		$("#tbl_reply").show();
+	}
+	
+	function insertReply() {
+		var val_article_id = '${articleDTO.article_id}';
+		var val_name = $('#name').val();
+		var val_content = $('#content').val();
+			
+		$.ajax({
+			url : "${app}/replyinsert",
+			method : "POST",
+			data : {
+				article_id : val_article_id,
+				name : val_name,
+				content : val_content
+			},
+			dataType : "json",
+			success : function(data) {
+				if (data.insert_reply_Success == "True") {
+					location.reload();
+				}
+			}
+		})	
+	}
+
+	function deleteReply(reply_id) {
+		$.ajax({
+			url : "${app}/replydelete",
+			method : "POST",
+			data : {
+				reply_id : reply_id
+			},
+			dataType : "json",
+			success : function(data) {
+				if (data.delete_reply_Success == "True") {
+					location.reload();
+				}
+			}
+		})
+	}
+
+	function selectReply(reply_id) {
+		$.ajax({
+			url : "${app}/selectreply",
+			method : "POST",
+			data : {
+				reply_id : reply_id
+			},
+			dataType : "json",
+			success : function(data) {
+				if (data.select_reply_Success == "True") {
+					location.reload();
+				}
+			}
+		})	
+	}
+</script>
 </head>
 
 <body>
@@ -98,7 +164,6 @@ a:visited {
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<table id="tbl_articledetail">
 			<tr>
@@ -142,8 +207,6 @@ a:visited {
 		</table>
 		<div style="width:100%; height:500px; overflow:auto">
 			<table  width="100%" id="tbl_reply">
-
-				<!-- insert table row -->
 				<c:if test="${member != null}">
 					<tr>
 						<th colspan="5"><input type="text" id="name"
@@ -181,110 +244,16 @@ a:visited {
 							</c:otherwise>
 						</c:choose>
 						</td>
-						
 						<c:if test="${member != null}">
-							<td>
-								<button type="submit" class="button button4" onclick="selectReply(${replydto.reply_id});">Select</button>
-								/
-								<button type="submit" class="button button4" onclick="deleteReply(${replydto.reply_id});">Delete</button>
-							</td>
-						</c:if>
-					</tr>
-				</c:forEach>
-			</table>
+						<td>
+							<button type="submit" class="button button4" onclick="selectReply(${replydto.reply_id});">Select</button>
+							/
+							<button type="submit" class="button button4" onclick="deleteReply(${replydto.reply_id});">Delete</button>
+						</td>
+					</c:if>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
-
-
-	<script>
-		//화면 시작 시 tbl show 우선 실행
-		$(document).ready(function() {
-			showTable();
-		})
-
-		function showTable() {
-			$("#tbl_reply").hide();
-			$("#tbl_articledetail").show();
-		}
-
-		function showReply() {
-			$("#tbl_articledetail").hide();
-			$("#tbl_reply").show();
-		}
-
-		// reply insert jquery fn 		
-		function insertReply() {
-			var val_article_id = '${articleDTO.article_id}';
-			var val_name = $('#name').val();
-			var val_content = $('#content').val();
-
-			//alert(val_article_id)
-			//alert(val_name)
-			//alert(val_content)
-			
-			$.ajax({
-				url : "${app}/replyinsert",
-				method : "POST",
-				data : {
-					article_id : val_article_id,
-					name : val_name,
-					content : val_content
-				},
-				dataType : "json",
-				
-				success : function(data) {
-					//alert(JSON.stringify(data));
-					if (data.insert_reply_Success == "True") {
-						location.reload();
-					}
-				}
-			})	
-			
-		}
-
-		// reply delete jquery fn
-		function deleteReply(reply_id) {
-			//alert(reply_id)
-
-			$.ajax({
-				url : "${app}/replydelete",
-				method : "POST",
-				data : {
-					reply_id : reply_id
-				},
-				dataType : "json",
-				
-				success : function(data) {
-					//alert(JSON.stringify(data));
-					if (data.delete_reply_Success == "True") {
-						location.reload();
-					}
-				}
-			})
-
-		}
-
-		// reply update jquery fn
-		function selectReply(reply_id) {
-			//alert(reply_id)
-			
-			$.ajax({
-				url : "${app}/selectreply",
-				method : "POST",
-				data : {
-					reply_id : reply_id
-				},
-				dataType : "json",
-				
-				success : function(data) {
-					//alert(JSON.stringify(data));
-					if (data.select_reply_Success == "True") {
-						location.reload();
-					}
-				}
-			})	
-		}
-				
-	</script>
-
 </body>
 </html>

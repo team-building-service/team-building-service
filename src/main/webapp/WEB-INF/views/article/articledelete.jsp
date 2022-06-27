@@ -5,7 +5,6 @@
 <html>
 <head>
 <title>Delete Article</title>
-
 <style>
 .ArticleDeleteWrapper {
 	margin: 200px auto;
@@ -15,21 +14,15 @@
 	text-align: center;
 	line-height: 1.8;
 }
-</style>
 
-<style>
 table {
 	border-color: white;
 	border-collapse: collapse;
 }
-
 </style>
-
 </head>
 <body>
-
 	<div class="ArticleDeleteWrapper">
-
 		<form method="post">
 			<table>
 				<caption>Delete article</caption>
@@ -46,7 +39,6 @@ table {
 					<th></th>
 					<td>* 처음 글 작성 시 비밀번호를 기입해주세요.</td>
 				</tr>
-
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="완료" /></td>
 				</tr>

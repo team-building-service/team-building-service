@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Delete board</title>
-
 <style>
 .boarddeleteWrapper {
 	margin: 300px auto;
@@ -16,30 +15,25 @@
 	line-height: 1.8;
 }
 </style>
-
 <script type="text/javascript">
-		// sending member info by ajax
-		$(document).ready(function() {
-			$.ajax({
-				url : "${app}/board/current_boardlist",
-				method : "GET",
-				success : function(data) {
-					for(var i =0; i<data.length;i++){
-						console.log(data[i].board_subject);
-						$("#selectBox").append("<option>"+data[i].board_subject+"</option>");
-					}
-				}
-			})
-		});
-	</script>
-
+$(document).ready(function() {
+	$.ajax({
+		url : "${app}/board/current_boardlist",
+		method : "GET",
+		success : function(data) {
+			for(var i =0; i<data.length;i++){
+				console.log(data[i].board_subject);
+				$("#selectBox").append("<option>"+data[i].board_subject+"</option>");
+			}
+		}
+	})
+});
+</script>
 </head>
 
 <body>
-
 	<div class="boarddeleteWrapper">
 		<form method="post">
-
 			<table>
 				<caption>Delete board</caption>
 				<tr>
@@ -58,6 +52,5 @@
 			</table>
 		</form>
 	</div>
-
 </body>
 </html>

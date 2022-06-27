@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,16 +14,12 @@
 	text-align: center;
 	line-height: 1.8;
 }
-</style>
 
-<style>
 table {
 	border-color: white;
 	border-collapse: collapse;
 }
-</style>
 
-<style>
 textarea {
 	border: none;
 	resize: none;
@@ -37,7 +32,6 @@ input {
 </style>
 
 <script type="text/javascript">
-		// sending member info by ajax
 	$(document).ready(function() {
 		$.ajax({
 			url : "${app}/board/current_boardlist",
@@ -54,38 +48,26 @@ input {
 
 </head>
 <body>
-
 	<div class="UpdateArticleWrapper">
-
 		<form method="post">
 			<table>
 				<caption>Update article</caption>
-
 				<tr>
-					<th>article_id</th>
-					<td>${articleDTO.article_id }<input type="hidden"
-						name="article_id" value="${articleDTO.article_id }"
-						autofocus="autofocus" required="required" /></td>
+				<th>article_id</th>
+					<td>${articleDTO.article_id }<input type="hidden" name="article_id" value="${articleDTO.article_id }" autofocus="autofocus" required="required" /></td>
 				</tr>
 				<tr>
 					<th>title</th>
-					<td><input type="text" name="title"
-						value="${articleDTO.title }" required="required" /></td>
+					<td><input type="text" name="title" value="${articleDTO.title }" required="required" /></td>
 				</tr>
 				<tr>
 					<th>board_subject</th>
-					<td><select id="selectBox" name="board_subject"
-						required="required">
-					</select></td>
+					<td><select id="selectBox" name="board_subject" required="required"></select></td>
 				</tr>
-
 				<tr>
 					<th>content</th>
-					<td><textarea name="content" rows="5" cols="40"
-							required="required">${articleDTO.content }</textarea></td>
+					<td><textarea name="content" rows="5" cols="40" required="required">${articleDTO.content }</textarea></td>
 				</tr>
-
-
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="완료" /></td>
 				</tr>
