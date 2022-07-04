@@ -7,8 +7,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${app}/resources/css/style.css">
+<script src="${app}/resources/js/jquery.min.js"></script>
+<script src="${app}/resources/js/popper.js"></script>
+<script src="${app}/resources/js/bootstrap.min.js"></script>
+<script src="${app}/resources/js/main.js"></script>
 <title>Article</title>
-
 <style>
 .articleWrapper {
 	margin-top: 3%;
@@ -39,33 +45,18 @@ a:visited {
 }
 
 </style>
-
-
-<link
-	href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700'
-	rel='stylesheet' type='text/css'>
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="${app}/resources/css/style.css">
-
 </head>
 <body>
-
 	<div class="articleWrapper">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Articles of
-						${board_subject.toUpperCase() }</h2>
+					<h2 class="heading-section">Articles of ${board_subject.toUpperCase() }</h2>
 				</div>
 			</div>
-
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-wrap">
-
 						<table class="table">
 							<tr>
 								<th>번호</th>
@@ -74,7 +65,6 @@ a:visited {
 								<th>작성일</th>
 								<th>조회수</th>
 							</tr>
-
 							<tbody>
 								<c:forEach items="${list}" var="dto" varStatus="vs">
 									<c:if test="${dto.board_subject == board_subject }">
@@ -95,36 +85,28 @@ a:visited {
 											</c:choose>
 											<td>${dto.readcount}</td>
 										</tr>
-
 									</c:if>
 								</c:forEach>
-
 							</tbody>
-
 							<tr class="paging">
 								<td colspan="5">
-									
 									<c:if test="${startPage != 1}">
 											[<a href="../${startPage - 1}/">이전블럭</a>]
 									</c:if>
-									
 									<c:forEach begin="${startPage}" end="${endPage}" var="p">
 										<c:if test="${p == pg}">${p}</c:if>
 										<c:if test="${p != pg}">
 											<a href="../${p}/">${p}</a>
 										</c:if>
 									</c:forEach>
-									
 									<c:if test="${endPage != pageCount}">
 											[<a href="../${endPage + 1}/">다음블럭</a>]
 									</c:if></td>
 							</tr>
 						</table>
-
 					</div>
 				</div>
 			</div>
-
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
 				<c:if test="${member != null}">
@@ -134,13 +116,6 @@ a:visited {
 			</div>
 		</div>
 		</section>
-
-		<script src="${app}/resources/js/jquery.min.js"></script>
-		<script src="${app}/resources/js/popper.js"></script>
-		<script src="${app}/resources/js/bootstrap.min.js"></script>
-		<script src="${app}/resources/js/main.js"></script>
-
 	</div>
-
 </body>
 </html>

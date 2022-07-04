@@ -17,35 +17,19 @@
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
 		<property name="username" value="ace" />
 		<property name="password" value="me" />
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521/xepdb1" />
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521" />
 		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy" />
 		<property name="maximumPoolSize" value="10" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="typeAliasesPackage" value="com.eveadam.blog.dto" />
+		<property name="typeAliasesPackage" value="com.building.team.dto" />
 	</bean>
 
-	 <!-- 
-	<bean id="boardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-		<property name="mapperInterface" value="com.eveadam.blog.mapper.board.BoardMapper" />
-	</bean>
-	
-	<bean id="ArticleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-		<property name="mapperInterface" value="com.eveadam.blog.mapper.article.ArticleMapper" />
-	</bean>
-	
-	<bean id="ReplyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-		<property name="mapperInterface" value="com.eveadam.blog.mapper.reply.ReplyMapper" />
-	</bean>
-	-->
 	<!-- 개별 선언 대신 아래와같은 mybatis tag로 한번에 가능 -->
 	<tx:annotation-driven />
-	<mybatis-spring:scan base-package="com.eveadam.blog.mapper" />
+	<mybatis-spring:scan base-package="com.building.team.mapper" />
 	
 	<bean id="transactionManager" 
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

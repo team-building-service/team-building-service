@@ -65,7 +65,7 @@
 </style>
 
 <html>
-<title>Tomorrow</title>
+<title>PUSH;DEV</title>
 
 <body>
 
@@ -105,7 +105,7 @@ IMP.request_pay({
 
 		<div>
 			<button class="custom-btn btn-1" id="popup_open_btn">Introduction
-				of finding pair programmer</button>
+				of finding pair programmers</button>
 		</div>
 		<br>
 		<div class="slide-child">나와 맞는 개발자를 구하자</div>
